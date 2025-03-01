@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Object Model Manipulation</title>
+    <style>
+        body {
+            background-color: black;
+            color: white
+        }
+    </style>
+</head>
+
+<body>
+    <div class="Container">
+        <h1>Dom Manipulation</h1>
+    </div>
+
+    <script>
+        let h2 = document.createElement('h2')
+        // {
+        // h2.innerText = 'This is brand new h2'
+        // h2.setAttribute('class', 'test')
+        // h2.setAttribute('id', 'testing')
+        // console.log(h2, h2.getAttribute('class'))
+        // h2.removeAttribute('class')
+        // console.log(h2) 
+        // }
+        h2.innerText = 'This ia a bradn new h2'
+        let Container = document.createElement('.conatiner')
+
+        // Container.append(h2)
+        // Container.prepend(h2)
+        // Container.before(h2)
+        // Container.after(h2)
+        // container.remove(h2)
+    </script>
+</body>
+
+</html>

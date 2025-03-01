@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event</title>
+    <style>
+        body {
+            border-color: black;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>
+        We are learning Event Right now
+    </h1>
+    <button onclick="changeToDark()">Change to dark</button>
+    <button onmouseover="changeToLight()">Change to light</button>
+
+    <script>
+        let changeToDark = () => {
+            document.body.style.backgroundColor = 'black'
+            document.body.style.color = 'white'
+        }
+
+        let changeToLight = () => {
+            document.body.style.backgroundColor = 'white'
+            document.body.style.color = 'black'
+        }
+
+        let bt1 = document.querySelector('#bt1');
+        let bt2 = document.querySelector('bt2');
+
+        // bt1.addEventlistener('click' , changeToDark)
+        bt1.addEventListener('clcik', () => {
+            document.body.style.backgroundColor = 'black'
+            document.body.style.color = 'white'
+        })
+
+        bt2.addEventListener('click', () => {
+            document.body.style.backgroundColor = 'white'
+            document.body.color = 'black'
+        })
+    </script>
+</body>
+
+</html>

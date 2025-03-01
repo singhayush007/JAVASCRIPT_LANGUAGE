@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Clock Project</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #74ebd5, #acb6e5);
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            flex-direction: column;
+        }
+
+        .clock-container {
+            padding: 20px 40px;
+            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.2);
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .clock {
+            font-size: 56px;
+            font-weight: 600;
+        }
+
+        .clock-container p {
+            font-size: 18px;
+            margin-top: 10px;
+            color: #f8f8f8;
+        }
+
+        .play-sound-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: 600;
+            border: none;
+            background: #ff6b6b;
+            color: #fff;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .play-sound-btn:hover {
+            background: #ff4757;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="clock-container">
+        <h1 class="clock">00:00:00 AM</h1>
+        <p>Current Time</p>
+    </div>
+
+    <button class="play-sound-btn" onclick="startClockSound()">🔊 Enable Sound</button>
+
+    <audio id="clock-sound" src="./tickingclock.mp3" preload="auto"></audio>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            let hours = now.getHours();
+            let minutes = now.getMinutes().toString().padStart(2, '0');
+            let seconds = now.getSeconds().toString().padStart(2, '0');
+            let ampm = hours >= 12 ? "PM" : "AM";
+
+            hours = hours % 12 || 12; // Convert 24-hour format to 12-hour format
+            hours = hours.toString().padStart(2, '0'); // Ensure two-digit format
+
+            document.querySelector(".clock").textContent = `${hours}:${minutes}:${seconds} ${ampm}`;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        function startClockSound() {
+            const clockSound = document.getElementById("clock-sound");
+
+            function playTickSound() {
+                clockSound.currentTime = 0;
+                clockSound.play().catch(error => console.log("Audio autoplay blocked:", error));
+            }
+
+            setInterval(playTickSound, 1000);
+        }
+    </script>
+</body>
+
+</html>
+
